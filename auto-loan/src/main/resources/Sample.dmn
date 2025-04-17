@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dfm="https://www.decisionsfirst.com/dfm/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://www.omg.org/spec/DMN/20230324/DFM-dd025674-d90a-4527-85d2-70533ac95eaa" exporter="DFM-Modeler" name="DFM-Modeler" id="DFM-dd025674-d90a-4527-85d2-70533ac95eaa">
+  <itemDefinition isCollection="false" name="t_Decision-admin 1" id="DFM-46b092a3-85c3-2a55-3cf0-c9f1e9a6b9d9">
+    <description></description>
+    <typeRef>boolean</typeRef>
+  </itemDefinition>
+  <itemDefinition name="Address" id="DFM-7298ef34-56a2-ed9b-2549-39beffd476c3">
+    <description></description>
+    <itemComponent isCollection="false" name="Zip" id="DFM-eaa403b1-4408-4c70-8a27-64ee1a3750da">
+      <description></description>
+      <typeRef>Any</typeRef>
+    </itemComponent>
+    <itemComponent isCollection="false" name="Streetename" id="DFM-8ce32b62-05a1-421d-9f11-9f5eef7be35e">
+      <description></description>
+      <typeRef>Any</typeRef>
+    </itemComponent>
+    <itemComponent isCollection="true" name="Phone" id="DFM-fd4d2c0d-d4e8-4cf5-86d7-55c7e0c07443">
+      <description></description>
+      <typeRef>number</typeRef>
+    </itemComponent>
+  </itemDefinition>
+  <decision name="Decision-admin 1" id="DFM-ae6c6e92-4e2f-937e-f09b-4caf5d441773">
+    <description></description>
+    <variable typeRef="t_Decision-admin 1" name="Decision-admin 1" id="DFM-5cb67825-8398-4be1-94ba-8dcb06f8df72" />
+    <informationRequirement id="DFM-2b6826d2-593d-4cb7-957b-46af0f187234">
+      <requiredInput href="#DFM-46fa9ab3-23ad-ca15-21d7-425ef1cb1855" />
+    </informationRequirement>
+    <context id="_91654F12-116F-47C9-AC57-A6F8F20B1604" typeRef="t_Decision-admin 1" label="Decision-admin 1">
+      <contextEntry id="_325A8B78-C7D4-4EA3-AA53-021DD3BE7CBC">
+        <variable id="_BD9D40EC-6ADB-4B7A-9B35-28F745838413" name="func abc" typeRef="t_Decision-admin 1" />
+        <functionDefinition id="_DC402C1D-F1F6-45BA-8A4C-77371A8C7D0D" typeRef="t_Decision-admin 1" kind="FEEL" label="func abc">
+          <formalParameter id="_834EC077-0C53-4963-B54F-0E4DD840F8E1" name="zip" typeRef="Any" />
+          <formalParameter id="_0F55DD51-6721-4D5D-A426-723058ACAB7F" name="streetName" typeRef="Any" />
+          <formalParameter id="_3547E109-C1F6-4A8E-8BEF-AE1D7602C5D2" name="phone" typeRef="number" />
+          <decisionTable id="_B3B59D7F-76BA-4423-BCA0-A7AE15E077DE" typeRef="Any" hitPolicy="ANY" label="Return">
+            <input id="_19CDAD2A-FEE0-4000-BAD6-AAAB8400BBF5">
+              <inputExpression id="_9512F396-9326-4429-96ED-1CC3CD420EF3" typeRef="Any">
+                <text>zip</text>
+              </inputExpression>
+            </input>
+            <input id="_A843C7A7-FFA4-46CE-BBE8-FC85A50BD915">
+              <inputExpression id="_44B68429-045A-47D8-9207-B3B22D5F268B" typeRef="Any">
+                <text>streetName</text>
+              </inputExpression>
+            </input>
+            <input id="_A3E0AA78-CCA2-411A-9CA1-0A0547FE0FA2">
+              <inputExpression id="_5F90D296-0382-4983-B42B-38D98C3EBFED" typeRef="number">
+                <text>phone</text>
+              </inputExpression>
+            </input>
+            <output id="_A47F680C-01C2-4C75-95E1-971D678EB5E1" name="Output-1" />
+            <annotation name="Annotations" />
+            <rule id="_4C08FFC4-00D5-4BAD-BE00-A697CDFA1B64">
+              <inputEntry id="_02DD05DE-4C53-4B60-A7EF-86AB1AD39817">
+                <text>&quot;a&quot;</text>
+              </inputEntry>
+              <inputEntry id="_95632FEA-A99C-493D-8DBE-A5C03E43D19C">
+                <text>&quot;b&quot;</text>
+              </inputEntry>
+              <inputEntry id="_474C5307-EB8A-449C-93CC-91840D98012E">
+                <text>1</text>
+              </inputEntry>
+              <outputEntry id="_7D21D2CE-0188-46E6-831F-6F2D3A32A955">
+                <text>&quot;a1&quot;</text>
+              </outputEntry>
+              <annotationEntry>
+                <text>// Your annotations here</text>
+              </annotationEntry>
+            </rule>
+            <rule id="_4E40C87A-3219-4D1D-BE32-7BE044B37521">
+              <inputEntry id="_49A1D66A-425A-46FC-BF07-563A4B6A13D4">
+                <text>&quot;a&quot;</text>
+              </inputEntry>
+              <inputEntry id="_ECB2C342-9C03-4603-AF6C-0A9B293FCB82">
+                <text>&quot;b&quot;</text>
+              </inputEntry>
+              <inputEntry id="_27705D11-9034-4490-99D3-084FB628C072">
+                <text>2</text>
+              </inputEntry>
+              <outputEntry id="_2D526CF7-5191-4CF1-B060-589D21C2D7E8">
+                <text>&quot;a2&quot;</text>
+              </outputEntry>
+              <annotationEntry>
+                <text></text>
+              </annotationEntry>
+            </rule>
+          </decisionTable>
+        </functionDefinition>
+      </contextEntry>
+      <contextEntry id="_10A3E7B8-217C-41EF-AB97-47DB7DE80B1A">
+        <literalExpression id="_2F9862F0-B6D0-48D4-92BF-2FA9A844E4FD" typeRef="t_Decision-admin 1" label="Decision-admin 1">
+          <text>for i in 1..count(Input Data-admin.Phone) return func abc(Input Data-admin.Zip, Input Data-admin.Streetename,Input Data-admin.Phone[i])</text>
+        </literalExpression>
+      </contextEntry>
+    </context>
+  </decision>
+  <inputData name="Input Data-admin" id="DFM-46fa9ab3-23ad-ca15-21d7-425ef1cb1855">
+    <description></description>
+    <variable typeRef="Address" name="Input Data-admin" id="DFM-b82c35c3-277e-4e2a-92f0-ebd506b30ddb" />
+  </inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram name="BD-DRD" documentation="" id="DFM-2077ce4e-fac7-8026-e2d3-fe4cd716f31e" useAlternativeInputDataShape="false">
+      <di:extension>
+        <dfm:diagramType />
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_91654F12-116F-47C9-AC57-A6F8F20B1604">
+            <kie:width>120</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_B3B59D7F-76BA-4423-BCA0-A7AE15E077DE">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_2F9862F0-B6D0-48D4-92BF-2FA9A844E4FD">
+            <kie:width>190</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape xmlns:ns6="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns="" dmnElementRef="DFM-46fa9ab3-23ad-ca15-21d7-425ef1cb1855" id="DFM-9938bb0a-98aa-4e09-a429-0a9b52cce0fc">
+        <dmndi:DMNStyle id="_44BA1850-AF03-49F0-B2AC-99E4E5CAA47C">
+          <dmndi:FillColor red="255" green="255" blue="255" />
+          <dmndi:StrokeColor red="0" green="0" blue="0" />
+          <dmndi:FontColor red="0" green="0" blue="0" />
+        </dmndi:DMNStyle>
+        <dc:Bounds x="295" y="280.640625" width="125" height="50" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape xmlns:ns6="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns="" dmnElementRef="DFM-ae6c6e92-4e2f-937e-f09b-4caf5d441773" id="DFM-50263ced-ec34-4719-9bd6-d766620b5774">
+        <dmndi:DMNStyle id="_0FF1A2D8-C0C8-42BB-9214-8C12350CC4DD">
+          <dmndi:FillColor red="255" green="255" blue="255" />
+          <dmndi:StrokeColor red="0" green="0" blue="0" />
+          <dmndi:FontColor red="0" green="0" blue="0" />
+        </dmndi:DMNStyle>
+        <dc:Bounds x="230" y="148.640625" width="100" height="50" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge xmlns:ns6="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns="" dmnElementRef="DFM-2b6826d2-593d-4cb7-957b-46af0f187234" id="DFM-8bd152b3-8470-4fc1-81a1-9bb8a191edd9">
+        <di:waypoint x="0" y="0" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
