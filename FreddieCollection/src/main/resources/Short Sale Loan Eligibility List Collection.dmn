@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="http://www.omg.org/spec/DMN/20180521/DFM-bf0de01e-64cd-4fe8-8c14-2912c8a0008f" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" id="DFM-bf0de01e-64cd-4fe8-8c14-2912c8a0008f" name="ShortSaleLoanEligibilityList" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="http://www.omg.org/spec/DMN/20180521/DFM-bf0de01e-64cd-4fe8-8c14-2912c8a0008f">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="DFM-4c91947c-7c42-4997-9c7e-0d8e0bd2e555" name="Short Sale Property Type Eligibility" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_C15FB524-45FA-4E70-AE25-4006B3D851C9">
+      <dmn:text>"Eligible", "Not Eligible", "Undetermined"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-7f66d818-3f27-40af-9d24-dfed70cceda7" name="Loan Status Type Eligibility" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_3BD8EA57-0DAD-426C-B492-1A45CADA3F75">
+      <dmn:text>"Eligible", "Not Eligible", "Undetermined"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-c11c521e-dcee-e1a4-c59b-af4547595216" name="Mortgage Type Eligibility" isCollection="false">
+    <dmn:itemComponent id="DFM-cae568a1-193f-48bb-9580-9703d5426752" name="Conclution" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-e7d3b0b1-9a27-4d10-a1c3-32bcc6f5bdb9" name="MMS Message Parameters" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-b6131cf9-16c2-4aef-8ca1-d505acfd6a38" name="Rule Message Description" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-1bbf78c3-294b-4f04-a90a-5dc92ca0a6da" name="Short Sale Mortgage Type Eligibility" isCollection="false">
+    <dmn:typeRef>Mortgage Type Eligibility</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-c2fe234b-a229-4c02-aa1a-86685432ea2f" name="Short Sale Property Usage Type Eligibility" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_347760AE-37B1-4034-93D7-51482CE1BDEA">
+      <dmn:text>"Undetermined", "Eligible", "Not Eligible"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-f0f3fce2-95e9-4ee0-a913-9a2ccc015c01" name="Credit Enhancement Eligibility" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_B33F329A-2DCA-4CC8-8EC9-4B31448AC959">
+      <dmn:text>"Eligible", "Not Eligible", "Eligible Warning"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-e6ed4373-f1c5-4bd5-8edf-b309f90ba5a2" name="Short Sale Loan Eligibility List" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_5978D3BD-F79B-4C9F-8A89-CCBB52D0DF44">
+      <dmn:text>"Eligible", "Not Eligible", "Undetermined", "Eligible Warning"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-cf372a4c-7c23-4168-95f5-6ee0c764fdc1" name="Liquidations" isCollection="false">
+    <dmn:itemComponent id="DFM-e04a0b62-804e-4b74-9e4f-ea47b923b547" name="Mortgage Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues id="_2CBFA651-A514-47B9-8928-9CEEC99555CA">
+        <dmn:text>"FHA/VA Loan", "USDA Rural Housing", "Other"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-f83a1feb-32ce-4260-bc38-8c8f74c410f4" name="Workout Reporting Status Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-ba9f61e7-8a63-4dfa-9e8d-89d70dd54a37" name="Application Data" isCollection="false">
+    <dmn:itemComponent id="DFM-561ae6d4-cd6f-47c0-891b-470249e6ffbf" name="Property Usage Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues id="_3F98DEFD-2024-4C91-A2C4-964B3454C8F0">
+        <dmn:text>"PR", "CA"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-c4d90ad6-78ad-4caa-b750-8818e6c4c14a" name="Credit Enhancement Obligation Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues id="_C122E1F4-4915-47C7-9B62-5F363C377100">
+        <dmn:text>"Resource", "Indemn"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-76c385f7-86b6-479f-b583-93f275af9606" name="Loan Status Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues id="_AF2C8E6A-4A26-4CC7-8348-4B10A03995D6">
+        <dmn:text>"Closed", "REO"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-fb248dd1-22e8-4555-a196-30ff38e05030" name="Inflight Workout Status Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues id="_27E4CC69-E06A-46CA-A50A-5AB869D7077C">
+        <dmn:text>"GA", "CA", "MA"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-ecfaac73-fbf3-4a7d-822e-1b52ea484084" name="Loan Delinquent Month Count" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-9a756bcf-f4eb-4189-a688-b0265a15958c" name="Property Type" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues id="_941E7DBE-117B-4ED7-8871-16D891B8B547">
+        <dmn:text>"Residential", "Co-Op"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="DFM-c66cc281-e95a-405d-9a5b-a7b7eca3aecb" name="Property Damaged Indicator" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="DFM-44ad2c08-0db8-4dbc-a0ab-55f4c0c0090e" name="Derived Loan Delinquent Month Count" isCollection="false">
+    <dmn:typeRef>number</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_2C0CB4D2-0B23-4039-942D-59D262DAA898" name="Debt" isCollection="true">
+    <dmn:itemComponent id="_A7486B20-16D2-459D-B97D-F1239B10A9DD" name="creditorName" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_2E39D003-1A61-4516-A71C-EEEF9B428611" name="rating" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_8A54A3D5-51DD-46E5-A8E3-67E0914E2109" name="RatingEligibility" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:decision id="DFM-60039a2c-e1da-4966-a547-642166c034bf" name="Property Type Eligibility">
+    <dmn:extensionElements/>
+    <dmn:question>Is the short sale property type eligible for adjudication?</dmn:question>
+    <dmn:variable id="DFM-b48d40df-4752-4603-b0c6-23ea0c75d7f2" name="Property Type Eligibility" typeRef="Short Sale Property Type Eligibility"/>
+    <dmn:informationRequirement id="DFM-e79e0e85-f6c7-472f-9836-4a4572614d75">
+      <dmn:requiredInput href="#DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="DFM-d991d9e9-cb6f-469a-879e-aad6930e9b3e" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="DFM-6396cdd1-b273-4636-a7e9-0835b1e24f97">
+        <dmn:inputExpression id="DFM-788b8f86-11ef-40f9-9550-322aee11ed82" typeRef="string">
+          <dmn:text>Application Data.Property Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="DFM-5cce4f76-3361-4cb8-822c-e92868fb35fc">
+        <dmn:outputValues id="DFM-1457b54b-1f10-4622-872d-e28d1ad1d66c">
+          <dmn:text>"Eligible", "Not Eligible", "Undetermined"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name=""/>
+      <dmn:rule id="DFM-d3797e51-2d5e-4e18-b5a7-ebdacf9f3cff">
+        <dmn:description>LM000089</dmn:description>
+        <dmn:inputEntry id="DFM-a584a305-2989-47e2-bb83-214b50bbb12f">
+          <dmn:text>"Co-Op"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-7018ca36-60d4-4469-802f-dd08cd19e914">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000089</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-a0f3b2ba-3000-40db-86b6-42060dfffe31">
+        <dmn:inputEntry id="DFM-14af8d4c-a8cd-4cf1-b588-6d90c3087b6e">
+          <dmn:text>!="Co-Op"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-dbf5d934-af82-4193-aa67-05a0460ca4dd">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-b3e39fe5-c803-4ef7-a495-d30b7f0c2764">
+        <dmn:inputEntry id="DFM-b9ca3b33-13cb-4e37-87fd-0ddb31863647">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-235813b4-357f-49fd-b62b-67249a60ec79">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="DFM-846d5018-0bdb-4d92-84bb-9075526e1c85" name="Loan Status Type Eligibility">
+    <dmn:extensionElements/>
+    <dmn:question>Is the loan status type eligible for adjudication?</dmn:question>
+    <dmn:variable id="DFM-0031e2d9-40ec-4ff1-8a67-30764aa602ea" name="Loan Status Type Eligibility" typeRef="Loan Status Type Eligibility"/>
+    <dmn:informationRequirement id="DFM-357c41e5-c32c-490b-8015-884e2106fae9">
+      <dmn:requiredInput href="#DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="DFM-8664eefa-fe1d-4a03-93ec-9b64571653ee" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="DFM-0b8ec772-2726-4d7c-92ca-d99ccbc49246">
+        <dmn:inputExpression id="DFM-b1868d46-c9bc-48fa-a341-6e14bbb9af22" typeRef="string">
+          <dmn:text>Application Data.Loan Status Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="DFM-41eff9bb-140d-45be-a982-897e9cca0165">
+        <dmn:inputExpression id="DFM-9ff86892-ecc4-4537-bdb1-76b8a03a9d92" typeRef="string">
+          <dmn:text>Application Data.Inflight Workout Status Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="DFM-0a6da615-b5e9-4dd4-ae79-bd318fb856aa">
+        <dmn:outputValues id="DFM-2bd4a7e5-35d6-4335-93c0-9323248d0c66">
+          <dmn:text>"Eligible", "Not Eligible", "Undetermined"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name=""/>
+      <dmn:rule id="DFM-7c0b28d3-0fc9-403b-8484-91627c6aef26">
+        <dmn:description>LM000096</dmn:description>
+        <dmn:inputEntry id="DFM-d68fa0fb-2f24-4786-8278-2f55e1537343">
+          <dmn:text>"Closed","REO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-9e9009cc-a905-46eb-a2d4-2f16e176bd4c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-1de7d143-da51-4cee-a61b-b71635d47beb">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000096</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-78995dc2-6eb6-44b3-833d-dfe06888f4d6">
+        <dmn:description>LM000096</dmn:description>
+        <dmn:inputEntry id="DFM-39585a5c-efcb-4961-96ae-1d04ae130cc0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-4f4892dd-a018-4164-8dd9-fe675fadbdf1">
+          <dmn:text>"GA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-294684ba-caef-460d-90f4-2bdcc696b482">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000096</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-c6350210-5d16-41d6-a927-107a7a2243d4">
+        <dmn:inputEntry id="DFM-73dc5b64-b241-40e1-891d-d0755c73d597">
+          <dmn:text>not("Closed","REO")</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-3d65952e-eb43-455f-8c77-364c459f8f51">
+          <dmn:text>!="GA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-fa698daa-4f71-4d8d-a24d-3043bf1c2ad6">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-167e32d6-77b1-4640-adc9-653b0c33b3ac">
+        <dmn:inputEntry id="DFM-39e9242f-b46e-4276-937c-42ae8dc1ae13">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-40d32b5a-e164-4b07-a251-99f4c36eeb1e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-9d932edb-88d5-426e-8430-535a3e69814c">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="DFM-8e79197e-f775-4de9-b219-7de36c396450" name="Mortgage Type Eligibility">
+    <dmn:extensionElements/>
+    <dmn:question>Is the short sale mortgage type eligible for adjudication?</dmn:question>
+    <dmn:variable id="DFM-cd3fbd5d-16af-4113-b37b-63722d916100" name="Mortgage Type Eligibility" typeRef="Short Sale Mortgage Type Eligibility"/>
+    <dmn:informationRequirement id="DFM-1494abeb-3876-47c7-8232-2d96f3d066c2">
+      <dmn:requiredInput href="#DFM-50c2b25c-78aa-45db-a8d7-b8c37db0a97a"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="DFM-8d077c4b-f48c-4bcf-b166-0570b6918ec7" hitPolicy="ANY" preferredOrientation="Rule-as-Row">
+      <dmn:input id="DFM-3f36f6ca-330a-478c-8cdb-666d8ac64f2f">
+        <dmn:inputExpression id="DFM-cb7e748d-530f-4892-b3cb-d19b6989ce66" typeRef="string">
+          <dmn:text>Liquidations.Mortgage Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="DFM-76b0aa32-84a8-422e-8948-c17faf765c05" name="Conclution" typeRef="string"/>
+      <dmn:output id="DFM-8ac657ae-b00d-4bed-a695-2d607a2c3f12" name="Rule Message Description" typeRef="string"/>
+      <dmn:annotation name=""/>
+      <dmn:rule id="DFM-d462b741-8ffe-4b63-8dbd-43eeaf5bde6d">
+        <dmn:description>LM000100</dmn:description>
+        <dmn:inputEntry id="DFM-1ec71489-2652-466b-b75f-fd56e245ab67">
+          <dmn:text>"FHA/VA Loan","USDA Rural Housing"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-bd3ab8b6-11a2-48c4-8355-7be2f2a68250">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="DFM-cd4445d6-0fdf-4ca9-8cbb-08ddac05ada8">
+          <dmn:text>"Loan is "+string(Liquidations.Mortgage Type)+" and not eligible for the Short Sale process. Please ensure Short Sale request is copliant with age."</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000100</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-62f92a48-4e77-440d-9d93-8f3557aed291">
+        <dmn:inputEntry id="DFM-4c33539c-c2c2-4691-bdab-53d40a6db963">
+          <dmn:text>not("FHA/VA Loan","USDA Rural Housing")</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-1979fc05-f9c4-4d90-ba69-1b9a896e2b55">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="DFM-2fea33a2-1658-4707-b28f-72d7ecc8290e">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="DFM-ab372b46-bfe3-424b-8510-528936aef1e7" name="Usage Type Eligibility">
+    <dmn:extensionElements/>
+    <dmn:question>Is the short sale property usage type eligible for adjudication?</dmn:question>
+    <dmn:variable id="DFM-45f045a1-4822-405a-9ae5-35d420bff4e2" name="Usage Type Eligibility" typeRef="Short Sale Property Usage Type Eligibility"/>
+    <dmn:informationRequirement id="DFM-e5fc2949-5976-4dee-a20e-a8a9dab8ae03">
+      <dmn:requiredInput href="#DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-c3849dbb-3f57-4449-82ab-0f3f789c85de">
+      <dmn:requiredInput href="#DFM-f64d061b-3f4e-6943-38fc-e20dd462ecb9"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="DFM-6dd7bd26-97ee-4c8f-8d77-7f002a027828" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="DFM-3827f3b6-3a72-43b2-8256-297de0479844">
+        <dmn:inputExpression id="DFM-0e35ed53-a651-4179-baa3-a1a3dd24138c" typeRef="number">
+          <dmn:text>Derived Loan Delinquent Month Count</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="DFM-86a848a8-04b4-4e37-abf2-938e315307c3">
+        <dmn:inputExpression id="DFM-bdec87ac-0d40-4c90-83dc-ba440e6af8c8" typeRef="string">
+          <dmn:text>Application Data.Property Usage Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="DFM-215f7cba-c5f7-4438-82bf-fdd77f7362ad">
+        <dmn:outputValues id="DFM-4b6a7043-cd96-482b-bbd3-22581463c969">
+          <dmn:text>"Undetermined", "Eligible", "Not Eligible"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name=""/>
+      <dmn:rule id="DFM-50a540b8-493d-48e5-8732-0466024391ab">
+        <dmn:inputEntry id="DFM-db7791c2-4eb6-46cf-a7c5-00ff6bf66777">
+          <dmn:text>&gt;2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-5349e9f7-6b34-4c38-9ea8-0d1e77ec0dcc">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-f015bf57-ad23-463d-8436-d048c9304239">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-1fae5afc-3b9a-4567-a938-b153b7f0ac24">
+        <dmn:description>LM000054</dmn:description>
+        <dmn:inputEntry id="DFM-be33a8d6-d058-490d-b92d-afcab3844397">
+          <dmn:text>&lt;2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-f0e5e26f-91ac-406a-a401-c606efc03e24">
+          <dmn:text>!="PR"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-81e14150-2523-4f6a-a20e-a3bb40e04e81">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000054</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-259fc972-6afc-408b-9bdb-a211a189eb9f">
+        <dmn:inputEntry id="DFM-43fd8468-09fa-40dd-b4cc-5c284d92222a">
+          <dmn:text>&lt;2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-f0907895-fdc5-4991-a357-66b9fb0a9968">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-3c7500b2-1544-4a57-ac1d-57a9bedf3d25">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-d507c929-ee63-49c8-85fe-2e6a2ea6dac3">
+        <dmn:inputEntry id="DFM-42aba472-132c-4bcb-9d57-a6fb6753f535">
+          <dmn:text>&lt;2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-3cbd2d33-4853-48a7-adac-7185946895e5">
+          <dmn:text>"PR"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-71950aad-fd39-4609-9c24-4ad4768011da">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="DFM-bb6c86e6-768a-45d1-96a9-87d142d82a83" name="Credit Enhancement Eligibility">
+    <dmn:extensionElements/>
+    <dmn:question>Is the credit enhancement eligible for adjudication?</dmn:question>
+    <dmn:variable id="DFM-617b6129-8267-4e77-9fc8-742f35c74634" name="Credit Enhancement Eligibility" typeRef="Credit Enhancement Eligibility"/>
+    <dmn:informationRequirement id="DFM-91bb7939-7797-4233-a57f-688d17459385">
+      <dmn:requiredInput href="#DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="DFM-8ce2f489-9c6c-4665-9a1b-f590ed7b1106" hitPolicy="ANY" preferredOrientation="Rule-as-Row">
+      <dmn:input id="DFM-e296037e-f5db-4a3b-a0cc-b199c7b7d296">
+        <dmn:inputExpression id="DFM-f1412ead-bda9-47b8-91fe-91db7c1217f9" typeRef="string">
+          <dmn:text>Application Data.Credit Enhancement Obligation Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="DFM-91b1c148-bd64-4daf-b768-6e62d7688e0a">
+        <dmn:outputValues id="DFM-c29219aa-c636-4777-b33c-b9c866188cf2">
+          <dmn:text>"Eligible", "Not Eligible", "Eligible Warning"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name=""/>
+      <dmn:rule id="DFM-c9324ace-d910-406c-8fc9-6a795a0bf486">
+        <dmn:description>LM000069</dmn:description>
+        <dmn:inputEntry id="DFM-3cc04294-0deb-4271-adeb-e762f369a33f">
+          <dmn:text>contains(lower case(?), lower case("Resource"))</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-da2eacff-8c71-49ea-a5bf-5f86b491b2c7">
+          <dmn:text>"Eligible Warning"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000069</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-38a2655b-494a-4f30-b888-2bab54ecdff6">
+        <dmn:description>LM000135</dmn:description>
+        <dmn:inputEntry id="DFM-4650bbcb-6779-4b63-9fec-457672b46262">
+          <dmn:text>contains(lower case(?), lower case("Indemn"))</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-26fdf8d9-43be-44d3-9121-23692a396091">
+          <dmn:text>"Eligible Warning"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>LM000135</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-cf32b717-f332-4049-9f81-2ed188cfee6b">
+        <dmn:inputEntry id="DFM-99b91e2c-ae3b-435b-b55f-1d093fe4e319">
+          <dmn:text>not(some s in ["Resource","Indemn"] satisfies lower case(s)=lower case(?))</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-ba270067-dec0-45f9-95b5-b1d313eead16">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="DFM-f62d39f0-77af-4c5e-a944-a904006ceb2c" name="Short Sale Loan Eligibility List">
+    <dmn:extensionElements/>
+    <dmn:question>What type of eligibility is there for this short sale loan?</dmn:question>
+    <dmn:variable id="DFM-a69d5d05-900e-405e-bec2-617e89758c22" name="Short Sale Loan Eligibility List" typeRef="Short Sale Loan Eligibility List"/>
+    <dmn:informationRequirement id="DFM-caa564e2-215b-4eeb-9821-6e49236c5c63">
+      <dmn:requiredDecision href="#DFM-60039a2c-e1da-4966-a547-642166c034bf"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-91c39702-a48d-4e7d-ba66-b03a1e91c37a">
+      <dmn:requiredDecision href="#DFM-846d5018-0bdb-4d92-84bb-9075526e1c85"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-93e3114b-5f22-4c34-8ec7-699ed3795c6b">
+      <dmn:requiredDecision href="#DFM-8e79197e-f775-4de9-b219-7de36c396450"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-16471f9c-158f-40b6-b35e-c2af58104def">
+      <dmn:requiredDecision href="#DFM-ab372b46-bfe3-424b-8510-528936aef1e7"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-bdf82262-faf7-4884-896b-a6ec108d5e1a">
+      <dmn:requiredDecision href="#DFM-bb6c86e6-768a-45d1-96a9-87d142d82a83"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-9bdf9a2b-1ede-4085-9d00-2191d055ffaf">
+      <dmn:requiredInput href="#DFM-50c2b25c-78aa-45db-a8d7-b8c37db0a97a"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="DFM-a026fe9c-af91-4756-895b-e272c37281a2">
+      <dmn:requiredInput href="#DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C9C228AA-FFE3-4E14-9588-5C83E4730B41">
+      <dmn:requiredDecision href="#_6A68DAB3-9648-4FE3-B01B-04489DB26456"/>
+    </dmn:informationRequirement>
+    <dmn:authorityRequirement id="DFM-011c8460-4ff4-416d-9aae-0ff926354b10">
+      <dmn:requiredAuthority href="#DFM-27925e3b-09f4-4128-97ac-93a517de39f4"/>
+    </dmn:authorityRequirement>
+    <dmn:decisionTable id="DFM-27cb9653-8dde-4536-9219-b5e1b9083bdb" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="DFM-6df02bc6-7656-4363-8d4a-71b800777c98">
+        <dmn:inputExpression id="DFM-cb715278-15ee-43e2-a02b-06d33bec05dc" typeRef="string">
+          <dmn:text>Liquidations.Workout Reporting Status Type</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="DFM-3949bedd-5679-43cd-a2f6-8b1492de7e61">
+        <dmn:inputExpression id="DFM-6bbf3f74-adbe-4529-9bfc-7c5f22a64b37" typeRef="string">
+          <dmn:text>Loan Status Type Eligibility</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="DFM-cca9a1ae-3e88-43e4-b339-12e48ace7f82">
+        <dmn:inputExpression id="DFM-6bac600c-3ac2-45c4-bdd4-8d85dad8d83d" typeRef="string">
+          <dmn:text>Credit Enhancement Eligibility</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="DFM-b61d630d-8e4f-459c-918b-8652610ccc79">
+        <dmn:inputExpression id="DFM-b299fc0d-f15f-4ecf-aa3d-ab77b588deec" typeRef="string">
+          <dmn:text>Usage Type Eligibility</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="DFM-80bad9a6-625a-4b77-b266-29320018563d">
+        <dmn:inputExpression id="DFM-7b950722-1959-4fed-bba2-7a9378820acf" typeRef="string">
+          <dmn:text>Property Type Eligibility</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E1A64F77-74E6-4F49-93B3-0298A0489198">
+        <dmn:inputExpression typeRef="string">
+          <dmn:text>Rating Eligibility</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="DFM-d21892c4-be97-496d-8814-867fe7b2b6bd">
+        <dmn:outputValues id="DFM-ebba2109-15fc-402b-9827-ec04acc02e4e">
+          <dmn:text>"Eligible", "Not Eligible", "Undetermined", "Eligible Warning"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name=""/>
+      <dmn:rule id="DFM-eb5dd1b8-6017-494f-85c9-ff1e58382341">
+        <dmn:inputEntry id="DFM-c334da32-1e0d-4eef-8abc-130c2e858c39">
+          <dmn:text>!="WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-e9a154cc-c696-40fc-8dfc-18aadeb3d155">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-566e0ec2-f133-42f8-a1ff-280407ada290">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-77021d28-8d12-4e49-9a5b-a00bf3bf72b3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-157eb157-76b1-4ae5-80ea-bc20cd4f6087">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_626425C1-C722-4405-9DDE-785A32025623">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-aae13a86-72cd-4843-96a9-3612b91e7432">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-be90fa79-e822-493f-b0e6-998fa051eb9e">
+        <dmn:inputEntry id="DFM-9ee190be-eee7-40de-8389-427736155e32">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-a1b147c0-05b7-4871-a0b0-128038081ff2">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-20cedb00-e4fc-4b02-b77d-7863d1bdae5b">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-cb3ee50b-b7ea-4201-8041-2d630d632b30">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-f76e493a-df8a-4241-bd12-8f26222617a1">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CAC841EC-F2A9-482A-B88D-5B563FBA9DB1">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-e306ecdb-bd4c-4999-9239-3f64a4425bf8">
+          <dmn:text>"Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-0c7c7274-ada6-400f-89a8-3e9d22d4d78b">
+        <dmn:inputEntry id="DFM-503daaa2-77cc-4d84-8473-17508a53da61">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-b36864a9-e61e-4fdc-b452-026af79095c2">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-573ce900-4cef-452c-8338-3c144c11ea4d">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-2d943d00-e0d8-4990-ac00-3890111afff3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-b28bede1-0b3f-4f4d-b222-ea09bc543d4b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B383A95-71F8-4717-9657-B2227C4F94DC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-4ef33691-6497-41dc-a4db-e8321aab3307">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-0d0b948d-625d-4d61-89be-a6f4fd7efe17">
+        <dmn:inputEntry id="DFM-057d2243-1a88-48c5-8bc7-50b4419822d3">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-9eb26c5f-6d4c-4432-b787-5df5910cd9e5">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-dfad0829-ff2b-49f8-a39b-f1a6eea9cc09">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-44acd8d8-4023-4dd9-b540-78f1beda8f0d">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-b668af8d-c77a-4ee8-b78b-f5848e801d0f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E276010C-AF93-4776-B146-EF4CA1B44A25">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-a89eaf3c-75cc-4d44-a972-f7ef6a6a8dd4">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-ce058160-39ff-4073-9874-4eeb88833a91">
+        <dmn:inputEntry id="DFM-08016784-3595-4d20-b54f-5f3cd11d8502">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-6a15a67c-f343-423e-a56b-f03b8e6f7ab7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-6de2e63d-8665-4aae-a82d-c74a30d4192e">
+          <dmn:text>"Eligible Warning"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-7caac8c3-7362-45b8-ae15-ce7a0b9cc3d0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-f8d36ce0-18cc-485b-981b-bb321241aa42">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DD673FB9-8336-4E84-BC79-292CD61937F2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-d18af9a5-0fc8-4bcf-8b07-7520e1043cca">
+          <dmn:text>"Eligible Warning"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-8e0ddcb0-330c-47b4-b278-b70c987eefb6">
+        <dmn:inputEntry id="DFM-e48a1c50-5da5-45ea-b136-c1995b51abea">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-a3d3670d-7f75-4af6-ad72-d5a4cbe98e2a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-aee7c826-2b48-4183-863c-f13ce0f9061f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-575620ca-6b9f-4d05-8b3c-8b2918f14060">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-82d5866b-bd0b-4856-a5a0-bfb13190e0a9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A8CA65FB-9E70-4C20-A93E-DF2A80F0B0CE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-6c881662-16bd-496a-9287-00d95d91eefe">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-607486e1-ca8e-4a66-903a-6529fb1c2091">
+        <dmn:inputEntry id="DFM-307342ab-f250-4d5f-a17f-ba6de820c619">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-7bf10209-7460-4d58-bb2e-378888f962e3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-2aa2566b-0990-4c0a-aff5-8d25b75d9e9b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-f807382f-c709-4b97-b9e5-f33dc0793d11">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-22e1faf7-205a-46cc-85a1-81eeca52d279">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_20A8AECB-2FC1-494C-A032-6A74F87686AF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-68d39d67-b0c6-4ffd-9263-a8c5e3f890f6">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-b3fef89f-8e29-4cc4-b8c2-6373a6e9bb49">
+        <dmn:inputEntry id="DFM-4efbfa74-6838-4779-8e30-4509710ab8fc">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-c3b956cb-d03b-4cd4-973e-53438c5d1a87">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-960e6c5a-5d27-4ff1-91bb-7c79a446cef4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-7ea0d0b8-4c7b-4cfc-8f65-dba1579b1efc">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-b136dc08-8e21-409d-ae9d-49c2a352d679">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2EE881A1-EE44-4D86-B387-A9328917756A">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-5e7bd46d-5e40-42ea-9593-3842d8d2c2cd">
+          <dmn:text>"Not Eligible"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="DFM-439c42d6-cfa9-4355-9f22-9757e013b062">
+        <dmn:inputEntry id="DFM-de5572bf-3a79-4183-8cff-96675ed9fa14">
+          <dmn:text>"WAReq"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-fff46d48-cc8b-42b6-9a18-5a4f1b572fc3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-394ac6b5-8615-4e58-bce4-8fc2d19da653">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-a7df4d93-b3f8-4420-a849-6815aa1fe2c5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="DFM-b34ac94a-9bf4-4cf9-80e7-4394fef51db8">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CB2BB394-4235-463A-84D3-9BFFEC0A4675">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="DFM-7c860ebd-13a3-49f9-aa64-d7c9f98695f5">
+          <dmn:text>"Undetermined"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:knowledgeSource id="DFM-27925e3b-09f4-4128-97ac-93a517de39f4" name="Short Sale Eligibility Policy x.234">
+    <dmn:extensionElements/>
+  </dmn:knowledgeSource>
+  <dmn:inputData id="DFM-50c2b25c-78aa-45db-a8d7-b8c37db0a97a" name="Liquidations">
+    <dmn:extensionElements/>
+    <dmn:variable id="DFM-5f541570-9dc7-4816-8d52-40df89efac4e" name="Liquidations" typeRef="Liquidations"/>
+  </dmn:inputData>
+  <dmn:inputData id="DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a" name="Application Data">
+    <dmn:extensionElements/>
+    <dmn:variable id="DFM-58368c14-85d2-40b1-bcaf-da650a94aee0" name="Application Data" typeRef="Application Data"/>
+  </dmn:inputData>
+  <dmn:inputData id="DFM-f64d061b-3f4e-6943-38fc-e20dd462ecb9" name="Derived Loan Delinquent Month Count">
+    <dmn:extensionElements/>
+    <dmn:variable id="DFM-ebe2983c-98fa-41ef-8790-c3b9b9ab0584" name="Derived Loan Delinquent Month Count" typeRef="Derived Loan Delinquent Month Count"/>
+  </dmn:inputData>
+  <dmn:decision id="_6A68DAB3-9648-4FE3-B01B-04489DB26456" name="Rating Eligibility">
+    <dmn:extensionElements/>
+    <dmn:variable id="_576F235E-2BD8-47BB-B240-BD97EF78FD23" name="Rating Eligibility" typeRef="RatingEligibility"/>
+    <dmn:informationRequirement id="_9C1872D4-F704-455D-A2A0-00F047F9F911">
+      <dmn:requiredInput href="#_3A56FA0F-FF0E-4DF4-AEBF-4F3077AF56D2"/>
+    </dmn:informationRequirement>
+    <dmn:context id="_25011293-CABA-4E13-9F52-B3251405AFF8">
+      <dmn:contextEntry>
+        <dmn:variable id="_00903EB7-3931-4040-8EA7-4B91A9C81CC8" name="Rating Function" typeRef="Any"/>
+        <dmn:functionDefinition id="_F852A2A3-B3DB-412E-8B66-2341DED7E910" kind="FEEL">
+          <dmn:formalParameter id="_7C25AF79-CF68-4AD9-AEF9-2C39A0278C36" name="creditorName" typeRef="string"/>
+          <dmn:formalParameter id="_CB290027-EB7B-4677-A668-87A30EA2F9DA" name="rating" typeRef="number"/>
+          <dmn:decisionTable id="_97ADDC31-18A5-4679-8EBD-8DD314732415" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+            <dmn:input id="_892ABC4D-E77F-4A2A-8446-63C6CB25206D">
+              <dmn:inputExpression id="_A27F314B-8370-4370-8BAE-106BAB5605BA" typeRef="string">
+                <dmn:text>creditorName</dmn:text>
+              </dmn:inputExpression>
+            </dmn:input>
+            <dmn:input id="_DFB78925-C6C1-483F-A94B-3E19B5BEC473">
+              <dmn:inputExpression id="_401C45C6-85BC-483D-A266-5F223EFF1C86" typeRef="number">
+                <dmn:text>rating</dmn:text>
+              </dmn:inputExpression>
+            </dmn:input>
+            <dmn:output id="_56015DC8-575B-4FB3-B614-11AF5978AFB1"/>
+            <dmn:annotation name="annotation-1"/>
+            <dmn:rule id="_9DC61351-F10B-4A7C-8309-1E65818046BE">
+              <dmn:inputEntry id="_EF14AEBA-1D65-4911-A565-2BA9F7ECEC85">
+                <dmn:text>"Sample Bank"</dmn:text>
+              </dmn:inputEntry>
+              <dmn:inputEntry id="_F29068FE-AA2C-4F34-B4FE-388FB65578FD">
+                <dmn:text>&gt;=7</dmn:text>
+              </dmn:inputEntry>
+              <dmn:outputEntry id="_5B5C1FD9-4E12-4FDA-8C5B-2F91509D5C49">
+                <dmn:text>"Eligible"</dmn:text>
+              </dmn:outputEntry>
+              <dmn:annotationEntry>
+                <dmn:text/>
+              </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_CB2C2838-BA57-48B3-873A-4A01B9DF7DAD">
+              <dmn:inputEntry id="_ED94FC23-85CB-45AD-A7FC-13AC45BFC3D6">
+                <dmn:text>not("Sample Bank")</dmn:text>
+              </dmn:inputEntry>
+              <dmn:inputEntry id="_50FAFCB1-82BA-4390-8CFF-C3A1A4C5FA00">
+                <dmn:text>&lt;7</dmn:text>
+              </dmn:inputEntry>
+              <dmn:outputEntry id="_81A244AF-716A-4571-8020-4E65D62DD5F7">
+                <dmn:text>"Not Eligible"</dmn:text>
+              </dmn:outputEntry>
+              <dmn:annotationEntry>
+                <dmn:text/>
+              </dmn:annotationEntry>
+            </dmn:rule>
+          </dmn:decisionTable>
+        </dmn:functionDefinition>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:variable id="_47143CD0-A582-4FD0-B488-87578FA9EE21" name="callFunction" typeRef="Any"/>
+        <dmn:literalExpression id="_1CA03429-7102-4A8A-9037-2E7BF1079B67">
+          <dmn:text>for i in 1..count(Debt) return Rating Function(Debt.creditorName[i],Debt.rating[i])</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:literalExpression id="_837BDE52-3DC8-4CBC-860E-293D2F301169">
+          <dmn:text>if (list contains(callFunction,"Not Eligible")) then "Not Eligible" else "Eligible"</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+    </dmn:context>
+  </dmn:decision>
+  <dmn:inputData id="_3A56FA0F-FF0E-4DF4-AEBF-4F3077AF56D2" name="Debt">
+    <dmn:extensionElements/>
+    <dmn:variable id="_CDA6450A-9B0D-41B5-8DA9-D0CE7972E7FD" name="Debt" typeRef="Debt"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DFM-bdea02d3-b0ec-4d8c-804d-83931e5cf63f" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="DFM-d991d9e9-cb6f-469a-879e-aad6930e9b3e"/>
+          <kie:ComponentWidths dmnElementRef="DFM-8664eefa-fe1d-4a03-93ec-9b64571653ee"/>
+          <kie:ComponentWidths dmnElementRef="DFM-8d077c4b-f48c-4bcf-b166-0570b6918ec7"/>
+          <kie:ComponentWidths dmnElementRef="DFM-6dd7bd26-97ee-4c8f-8d77-7f002a027828"/>
+          <kie:ComponentWidths dmnElementRef="DFM-8ce2f489-9c6c-4665-9a1b-f590ed7b1106"/>
+          <kie:ComponentWidths dmnElementRef="DFM-27cb9653-8dde-4536-9219-b5e1b9083bdb">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_25011293-CABA-4E13-9F52-B3251405AFF8">
+            <kie:width>50</kie:width>
+            <kie:width>120</kie:width>
+            <kie:width>675</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F852A2A3-B3DB-412E-8B66-2341DED7E910">
+            <kie:width>50</kie:width>
+            <kie:width>605</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_97ADDC31-18A5-4679-8EBD-8DD314732415">
+            <kie:width>50</kie:width>
+            <kie:width>166</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>169</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_1CA03429-7102-4A8A-9037-2E7BF1079B67">
+            <kie:width>675</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_837BDE52-3DC8-4CBC-860E-293D2F301169">
+            <kie:width>675</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-60039a2c-e1da-4966-a547-642166c034bf" dmnElementRef="DFM-60039a2c-e1da-4966-a547-642166c034bf" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="791" y="420.953125" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-846d5018-0bdb-4d92-84bb-9075526e1c85" dmnElementRef="DFM-846d5018-0bdb-4d92-84bb-9075526e1c85" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="642" y="425.953125" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-8e79197e-f775-4de9-b219-7de36c396450" dmnElementRef="DFM-8e79197e-f775-4de9-b219-7de36c396450" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="326" y="435.953125" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-ab372b46-bfe3-424b-8510-528936aef1e7" dmnElementRef="DFM-ab372b46-bfe3-424b-8510-528936aef1e7" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="943" y="427.953125" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-bb6c86e6-768a-45d1-96a9-87d142d82a83" dmnElementRef="DFM-bb6c86e6-768a-45d1-96a9-87d142d82a83" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="466" y="433.953125" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-f62d39f0-77af-4c5e-a944-a904006ceb2c" dmnElementRef="DFM-f62d39f0-77af-4c5e-a944-a904006ceb2c" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="584" y="265.953125" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-27925e3b-09f4-4128-97ac-93a517de39f4" dmnElementRef="DFM-27925e3b-09f4-4128-97ac-93a517de39f4" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="507" y="145.203125" width="100" height="63"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-50c2b25c-78aa-45db-a8d7-b8c37db0a97a" dmnElementRef="DFM-50c2b25c-78aa-45db-a8d7-b8c37db0a97a" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="350" y="312.953125" width="125" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a" dmnElementRef="DFM-bbbdc34d-3b85-439f-8158-d51cd4975d8a" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="561.8183390385582" y="590.00264911075" width="125" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-DFM-f64d061b-3f4e-6943-38fc-e20dd462ecb9" dmnElementRef="DFM-f64d061b-3f4e-6943-38fc-e20dd462ecb9" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="926.1404370404412" y="577.915387055375" width="125" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_6A68DAB3-9648-4FE3-B01B-04489DB26456" dmnElementRef="_6A68DAB3-9648-4FE3-B01B-04489DB26456" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1250.4363693073306" y="458.65541164603155" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_3A56FA0F-FF0E-4DF4-AEBF-4F3077AF56D2" dmnElementRef="_3A56FA0F-FF0E-4DF4-AEBF-4F3077AF56D2" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1174.211060372689" y="533.0674095050088" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-e79e0e85-f6c7-472f-9836-4a4572614d75" dmnElementRef="DFM-e79e0e85-f6c7-472f-9836-4a4572614d75">
+        <di:waypoint x="658.7709988368489" y="590.1990253781952"/>
+        <di:waypoint x="814.7904046721039" y="470.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-357c41e5-c32c-490b-8015-884e2106fae9" dmnElementRef="DFM-357c41e5-c32c-490b-8015-884e2106fae9">
+        <di:waypoint x="638.8914796687931" y="590.0561529593306"/>
+        <di:waypoint x="696.3998932015153" y="475.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-1494abeb-3876-47c7-8232-2d96f3d066c2" dmnElementRef="DFM-1494abeb-3876-47c7-8232-2d96f3d066c2">
+        <di:waypoint x="400.24067386127206" y="362.94756365208315"/>
+        <di:waypoint x="389.260162601626" y="435.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-e5fc2949-5976-4dee-a20e-a8a9dab8ae03" dmnElementRef="DFM-e5fc2949-5976-4dee-a20e-a8a9dab8ae03">
+        <di:waypoint x="675.7290365482637" y="593.3141936317433"/>
+        <di:waypoint x="943" y="475.99760666157124"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-c3849dbb-3f57-4449-82ab-0f3f789c85de" dmnElementRef="DFM-c3849dbb-3f57-4449-82ab-0f3f789c85de">
+        <di:waypoint x="0" y="0"/>
+        <di:waypoint x="0" y="0"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-91bb7939-7797-4233-a57f-688d17459385" dmnElementRef="DFM-91bb7939-7797-4233-a57f-688d17459385">
+        <di:waypoint x="610.0543059608133" y="590.0839414967033"/>
+        <di:waypoint x="540.8497254716312" y="484.053125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-caa564e2-215b-4eeb-9821-6e49236c5c63" dmnElementRef="DFM-caa564e2-215b-4eeb-9821-6e49236c5c63">
+        <di:waypoint x="815.8797253024194" y="420.953125"/>
+        <di:waypoint x="679.5021106350806" y="315.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-91c39702-a48d-4e7d-ba66-b03a1e91c37a" dmnElementRef="DFM-91c39702-a48d-4e7d-ba66-b03a1e91c37a">
+        <di:waypoint x="699.0635986328125" y="425.953125"/>
+        <di:waypoint x="656.6668701171875" y="315.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-93e3114b-5f22-4c34-8ec7-699ed3795c6b" dmnElementRef="DFM-93e3114b-5f22-4c34-8ec7-699ed3795c6b">
+        <di:waypoint x="424.4061063878677" y="435.953125"/>
+        <di:waypoint x="608.6476045496323" y="315.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-16471f9c-158f-40b6-b35e-c2af58104def" dmnElementRef="DFM-16471f9c-158f-40b6-b35e-c2af58104def">
+        <di:waypoint x="943" y="428.7367074874628"/>
+        <di:waypoint x="700.7329945505402" y="315.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-bdf82262-faf7-4884-896b-a6ec108d5e1a" dmnElementRef="DFM-bdf82262-faf7-4884-896b-a6ec108d5e1a">
+        <di:waypoint x="542.7157648162658" y="433.953125"/>
+        <di:waypoint x="628.7942770657808" y="315.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-9bdf9a2b-1ede-4085-9d00-2191d055ffaf" dmnElementRef="DFM-9bdf9a2b-1ede-4085-9d00-2191d055ffaf">
+        <di:waypoint x="444.66929360004696" y="318.10024447826544"/>
+        <di:waypoint x="510.3999938964844" y="287.5"/>
+        <di:waypoint x="584" y="289.3601162598085"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-a026fe9c-af91-4756-895b-e272c37281a2" dmnElementRef="DFM-a026fe9c-af91-4756-895b-e272c37281a2">
+        <di:waypoint x="627.1718309002229" y="590.0037479903655"/>
+        <di:waypoint x="645.3710445386978" y="315.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-DFM-011c8460-4ff4-416d-9aae-0ff926354b10" dmnElementRef="DFM-011c8460-4ff4-416d-9aae-0ff926354b10">
+        <di:waypoint x="587.7102781311867" y="215.0581064810531"/>
+        <di:waypoint x="627.4907804716856" y="265.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_C9C228AA-FFE3-4E14-9588-5C83E4730B41" dmnElementRef="_C9C228AA-FFE3-4E14-9588-5C83E4730B41">
+        <di:waypoint x="1300.4363693073306" y="483.65541164603155"/>
+        <di:waypoint x="634" y="290.953125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_9C1872D4-F704-455D-A2A0-00F047F9F911" dmnElementRef="_9C1872D4-F704-455D-A2A0-00F047F9F911">
+        <di:waypoint x="1224.211060372689" y="558.0674095050088"/>
+        <di:waypoint x="1300.4363693073306" y="483.65541164603155"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

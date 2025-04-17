@@ -1,0 +1,26 @@
+{
+  "Liquidations": {
+    "Mortgage Type": "FHA/VA Loan",
+    "Workout Reporting Status Type": "WAReq"
+  },
+  "Application Data": {
+    "Property Usage Type": "PR",
+    "Credit Enhancement Obligation Type": "Resource",
+    "Loan Status Type": "closed",
+    "Inflight Workout Status Type": "A",
+    "Loan Delinquent Month Count": 0,
+    "Property Type": "Co-Op",
+    "Property Damaged Indicator": true
+  },
+  "Derived Loan Delinquent Month Count": 0,
+  "Debt": [
+   {
+      "creditorName": "Sample Bank",
+      "rating": 10
+    },
+    {
+      "creditorName": "Sample Bank",
+      "rating": 10
+    }
+  ]
+}
